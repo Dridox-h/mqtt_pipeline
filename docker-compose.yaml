@@ -1,0 +1,64 @@
+services:
+
+  # ── Broker MQTT ─────────────────────────────────────────────────────────────
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    networks:
+      - mqtt_net
+    restart: unless-stopped
+
+  # ── Subscriber : reçoit + stocke dans /data/events.json ────────────────────
+  subscriber:
+    build: .
+    container_name: subscriber
+    environment:
+      - MQTT_BROKER=mosquitto
+      - PYTHONUNBUFFERED=1
+    command: python subscriber.py
+    volumes:
+      - ./data:/data          # Partage events.json avec git-pusher (host)
+    networks:
+      - mqtt_net
+    depends_on:
+      - mosquitto
+    restart: unless-stopped
+
+  # ── Publisher : génère des métadonnées toutes les 5 s ──────────────────────
+  publisher:
+    build: .
+    container_name: publisher
+    environment:
+      - MQTT_BROKER=mosquitto
+      - PYTHONUNBUFFERED=1
+    command: python publisher.py
+    networks:
+      - mqtt_net
+    depends_on:
+      - mosquitto
+    restart: unless-stopped
+
+  # ── Git Pusher : commit + push events.json sur GitHub toutes les 30 s ──────
+  git-pusher:
+    image: alpine/git
+    container_name: git-pusher
+    volumes:
+      - .:/repo               # Repo complet monté → git commit/push possible
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_REPO=Dridox-h/mqtt_pipeline
+    entrypoint: ["/bin/sh", "-c"]
+    command: "/repo/git_pusher.sh"
+    depends_on:
+      - subscriber
+    networks:
+      - mqtt_net
+    restart: unless-stopped
+
+networks:
+  mqtt_net:
+    driver: bridge

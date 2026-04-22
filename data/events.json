@@ -124,5 +124,12 @@
     "zone": "B",
     "confidence": 0.77,
     "ts": "2026-04-22T04:54:24+00:00"
+  },
+  {
+    "camera": "cam-3",
+    "event": "offline",
+    "zone": "B",
+    "confidence": 0.74,
+    "ts": "2026-04-22T04:54:29+00:00"
   }
 ]
