@@ -474,5 +474,54 @@
     "zone": "B",
     "confidence": 0.8,
     "ts": "2026-04-22T05:17:59+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "vehicle",
+    "zone": "C",
+    "confidence": 0.83,
+    "ts": "2026-04-22T05:18:04+00:00"
+  },
+  {
+    "camera": "cam-2",
+    "event": "offline",
+    "zone": "A",
+    "confidence": 0.89,
+    "ts": "2026-04-22T05:18:07+00:00"
+  },
+  {
+    "camera": "cam-1",
+    "event": "offline",
+    "zone": "A",
+    "confidence": 0.68,
+    "ts": "2026-04-22T05:18:12+00:00"
+  },
+  {
+    "camera": "cam-garage",
+    "event": "tamper",
+    "zone": "B",
+    "confidence": 0.9,
+    "ts": "2026-04-22T05:18:17+00:00"
+  },
+  {
+    "camera": "cam-2",
+    "event": "offline",
+    "zone": "entry",
+    "confidence": 0.88,
+    "ts": "2026-04-22T05:18:22+00:00"
+  },
+  {
+    "camera": "cam-3",
+    "event": "person",
+    "zone": "parking",
+    "confidence": 0.61,
+    "ts": "2026-04-22T05:18:27+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "person",
+    "zone": "A",
+    "confidence": 0.9,
+    "ts": "2026-04-22T05:18:32+00:00"
   }
 ]
