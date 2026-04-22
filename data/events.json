@@ -208,5 +208,47 @@
     "zone": "A",
     "confidence": 0.72,
     "ts": "2026-04-22T05:15:03+00:00"
+  },
+  {
+    "camera": "cam-3",
+    "event": "motion",
+    "zone": "entry",
+    "confidence": 0.84,
+    "ts": "2026-04-22T05:15:08+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "motion",
+    "zone": "C",
+    "confidence": 0.73,
+    "ts": "2026-04-22T05:15:13+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "motion",
+    "zone": "B",
+    "confidence": 0.86,
+    "ts": "2026-04-22T05:15:18+00:00"
+  },
+  {
+    "camera": "cam-2",
+    "event": "vehicle",
+    "zone": "entry",
+    "confidence": 0.64,
+    "ts": "2026-04-22T05:15:21+00:00"
+  },
+  {
+    "camera": "cam-3",
+    "event": "person",
+    "zone": "entry",
+    "confidence": 0.63,
+    "ts": "2026-04-22T05:15:26+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "person",
+    "zone": "B",
+    "confidence": 0.65,
+    "ts": "2026-04-22T05:15:31+00:00"
   }
 ]
