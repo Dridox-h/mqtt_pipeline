@@ -1,54 +1,5 @@
 [
   {
-    "camera": "cam-2",
-    "event": "person",
-    "zone": "A",
-    "confidence": 0.79,
-    "ts": "2026-04-22T05:32:55+00:00"
-  },
-  {
-    "camera": "cam-4",
-    "event": "person",
-    "zone": "C",
-    "confidence": 0.96,
-    "ts": "2026-04-22T05:33:00+00:00"
-  },
-  {
-    "camera": "cam-4",
-    "event": "vehicle",
-    "zone": "B",
-    "confidence": 0.72,
-    "ts": "2026-04-22T05:33:05+00:00"
-  },
-  {
-    "camera": "cam-4",
-    "event": "vehicle",
-    "zone": "entry",
-    "confidence": 0.96,
-    "ts": "2026-04-22T05:33:10+00:00"
-  },
-  {
-    "camera": "cam-4",
-    "event": "vehicle",
-    "zone": "A",
-    "confidence": 0.77,
-    "ts": "2026-04-22T05:33:13+00:00"
-  },
-  {
-    "camera": "cam-1",
-    "event": "tamper",
-    "zone": "B",
-    "confidence": 0.82,
-    "ts": "2026-04-22T05:33:18+00:00"
-  },
-  {
-    "camera": "cam-garage",
-    "event": "tamper",
-    "zone": "B",
-    "confidence": 0.69,
-    "ts": "2026-04-22T05:33:23+00:00"
-  },
-  {
     "camera": "cam-3",
     "event": "person",
     "zone": "parking",
@@ -698,5 +649,54 @@
     "zone": "A",
     "confidence": 0.79,
     "ts": "2026-04-22T05:40:32+00:00"
+  },
+  {
+    "camera": "cam-1",
+    "event": "vehicle",
+    "zone": "entry",
+    "confidence": 0.85,
+    "ts": "2026-04-22T05:40:34+00:00"
+  },
+  {
+    "camera": "cam-garage",
+    "event": "person",
+    "zone": "entry",
+    "confidence": 0.96,
+    "ts": "2026-04-22T05:40:39+00:00"
+  },
+  {
+    "camera": "cam-1",
+    "event": "person",
+    "zone": "parking",
+    "confidence": 0.91,
+    "ts": "2026-04-22T05:40:44+00:00"
+  },
+  {
+    "camera": "cam-3",
+    "event": "person",
+    "zone": "B",
+    "confidence": 0.74,
+    "ts": "2026-04-22T05:40:49+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "person",
+    "zone": "B",
+    "confidence": 0.72,
+    "ts": "2026-04-22T05:40:54+00:00"
+  },
+  {
+    "camera": "cam-3",
+    "event": "person",
+    "zone": "entry",
+    "confidence": 0.82,
+    "ts": "2026-04-22T05:41:00+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "vehicle",
+    "zone": "B",
+    "confidence": 0.95,
+    "ts": "2026-04-22T05:41:02+00:00"
   }
 ]
