@@ -1,47 +1,5 @@
 [
   {
-    "camera": "cam-1",
-    "event": "offline",
-    "zone": "A",
-    "confidence": 0.85,
-    "ts": "2026-04-22T05:38:21+00:00"
-  },
-  {
-    "camera": "cam-1",
-    "event": "person",
-    "zone": "entry",
-    "confidence": 0.65,
-    "ts": "2026-04-22T05:38:26+00:00"
-  },
-  {
-    "camera": "cam-1",
-    "event": "person",
-    "zone": "B",
-    "confidence": 0.84,
-    "ts": "2026-04-22T05:38:31+00:00"
-  },
-  {
-    "camera": "cam-1",
-    "event": "motion",
-    "zone": "C",
-    "confidence": 0.92,
-    "ts": "2026-04-22T05:38:36+00:00"
-  },
-  {
-    "camera": "cam-2",
-    "event": "vehicle",
-    "zone": "A",
-    "confidence": 0.81,
-    "ts": "2026-04-22T05:38:41+00:00"
-  },
-  {
-    "camera": "cam-3",
-    "event": "vehicle",
-    "zone": "B",
-    "confidence": 0.9,
-    "ts": "2026-04-22T05:38:44+00:00"
-  },
-  {
     "camera": "cam-2",
     "event": "person",
     "zone": "A",
@@ -698,5 +656,47 @@
     "zone": "parking",
     "confidence": 0.64,
     "ts": "2026-04-22T05:45:59+00:00"
+  },
+  {
+    "camera": "cam-2",
+    "event": "offline",
+    "zone": "parking",
+    "confidence": 0.61,
+    "ts": "2026-04-22T05:46:02+00:00"
+  },
+  {
+    "camera": "cam-3",
+    "event": "vehicle",
+    "zone": "C",
+    "confidence": 0.75,
+    "ts": "2026-04-22T05:46:07+00:00"
+  },
+  {
+    "camera": "cam-4",
+    "event": "person",
+    "zone": "entry",
+    "confidence": 0.81,
+    "ts": "2026-04-22T05:46:12+00:00"
+  },
+  {
+    "camera": "cam-1",
+    "event": "vehicle",
+    "zone": "entry",
+    "confidence": 0.93,
+    "ts": "2026-04-22T05:46:17+00:00"
+  },
+  {
+    "camera": "cam-garage",
+    "event": "motion",
+    "zone": "C",
+    "confidence": 0.69,
+    "ts": "2026-04-22T05:46:22+00:00"
+  },
+  {
+    "camera": "cam-garage",
+    "event": "tamper",
+    "zone": "B",
+    "confidence": 0.96,
+    "ts": "2026-04-22T05:46:27+00:00"
   }
 ]
