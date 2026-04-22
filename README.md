@@ -46,7 +46,6 @@ publisher.py  ──MQTT──►  mosquitto  ──MQTT──►  subscriber.py
 ```bash
 # Initialiser le repo git et connecter au GitHub distant
 git init
-git remote add origin https://github.com/Dridox-h/mqtt_pipeline.git
 
 # Vérifier que .env est présent (déjà pré-rempli si vous avez cloné ce projet)
 cat .env
