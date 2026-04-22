@@ -12,20 +12,51 @@ services:
       - mqtt_net
     restart: unless-stopped
 
-  # ── Subscriber : reçoit + stocke dans /data/events.json ────────────────────
+  # ── InfluxDB 2.x : stockage time-series ─────────────────────────────────────
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=adminpassword
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    networks:
+      - mqtt_net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "influx", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Subscriber : reçoit + stocke dans /data/events.json + InfluxDB ──────────
   subscriber:
     build: .
     container_name: subscriber
     environment:
       - MQTT_BROKER=mosquitto
       - PYTHONUNBUFFERED=1
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
+      - INFLUXDB_ORG=${INFLUXDB_ORG}
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET}
     command: python subscriber.py
     volumes:
       - ./data:/data          # Partage events.json avec git-pusher (host)
     networks:
       - mqtt_net
     depends_on:
-      - mosquitto
+      mosquitto:
+        condition: service_started
+      influxdb:
+        condition: service_healthy
     restart: unless-stopped
 
   # ── Publisher : génère des métadonnées toutes les 5 s ──────────────────────
@@ -40,6 +71,26 @@ services:
       - mqtt_net
     depends_on:
       - mosquitto
+    restart: unless-stopped
+
+  # ── Grafana : tableau de bord temps réel ─────────────────────────────────────
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/camera_events.json
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - influxdb
+    networks:
+      - mqtt_net
     restart: unless-stopped
 
   # ── Git Pusher : commit + push events.json sur GitHub toutes les 30 s ──────
@@ -62,3 +113,7 @@ services:
 networks:
   mqtt_net:
     driver: bridge
+
+volumes:
+  influxdb_data:
+  grafana_data:
